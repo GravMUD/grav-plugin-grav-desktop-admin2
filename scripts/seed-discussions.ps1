@@ -29,7 +29,8 @@ foreach ($item in $manifest) {
     if (-not $cid) { throw "Category not found: $($item.category)" }
     $bodyPath = Join-Path $discDir $item.bodyFile
     $body = Get-Content -Raw -LiteralPath $bodyPath -Encoding UTF8
-    $result = & $gh api graphql -F query=@$mutationFile -f repositoryId=$repoId -f categoryId=$cid -f title=$item.title -f body=$body
+    $title = [string]$item.title
+    $result = & $gh api graphql -F query=@$mutationFile -f repositoryId=$repoId -f categoryId=$cid -f "title=$title" -f body=$body
     $d = ($result | ConvertFrom-Json).data.createDiscussion.discussion
     Write-Host "OK #$($d.number): $($item.title)"
     Write-Host "   $($d.url)"

@@ -1,0 +1,5 @@
+mutation($discussionId: ID!, $title: String!) {
+  updateDiscussion(input: { discussionId: $discussionId, title: $title }) {
+    discussion { number title }
+  }
+}
