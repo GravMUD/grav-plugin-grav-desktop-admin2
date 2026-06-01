@@ -1324,9 +1324,9 @@
         const v = await api('/mambo-desktop/vitals');
         const jb = v.javabean;
         const jbNote = jb
-          ? `<p class="gd-vitals-note">JavaBean: <strong>${esc(jb.name)}</strong>${jb.tagline ? ` — ${esc(jb.tagline)}` : ''}. <a href="${esc(base)}/plugin/grav-javabean-admin2">Open JavaBean</a></p>`
+          ? `<p class="gd-vitals-note">JavaBean: <strong>${esc(jb.name)}</strong>${jb.tagline ? ` — ${esc(jb.tagline)}` : ''}. <a href="${esc(base)}/plugin/javabean-admin2">Open JavaBean</a></p>`
           : (this._wallpaper === 'javabean'
-            ? '<p class="gd-vitals-note">Enable grav-javabean-admin2 for JavaBean wallpaper sync.</p>'
+            ? '<p class="gd-vitals-note">Enable javabean-admin2 for JavaBean wallpaper sync.</p>'
             : '');
         body.innerHTML = `
           <div class="gd-vitals">

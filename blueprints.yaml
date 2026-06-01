@@ -162,7 +162,7 @@ form:
         teamdc: Team DC burst
         midnight: Midnight
         plain: Plain
-        javabean: JavaBean preset (requires grav-javabean-admin2)
+        javabean: JavaBean preset (requires javabean-admin2)
         custom: Custom upload (per user, via desktop preset strip)
       help: JavaBean uses active preset tokens. Custom wallpaper is uploaded from the desktop preset strip (per admin user).
     custom_apps:

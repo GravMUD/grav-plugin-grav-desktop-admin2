@@ -11,17 +11,21 @@ use Grav\Common\Grav;
  */
 class DesktopJavaBeanBridge
 {
+    private const SLUG = 'javabean-admin2';
+
+    private const LEGACY_SLUG = 'grav-javabean-admin2';
+
     public function __construct(private readonly Grav $grav)
     {
     }
 
     public function isAvailable(): bool
     {
-        if (!(bool) $this->grav['config']->get('plugins.grav-javabean-admin2.enabled', false)) {
+        if (!$this->javabeanEnabled()) {
             return false;
         }
 
-        return is_file(GRAV_ROOT . '/user/plugins/grav-javabean-admin2/classes/JavaBeanPresetRegistry.php');
+        return $this->registryPath() !== null;
     }
 
     /** @return array<string, mixed>|null */
@@ -31,7 +35,7 @@ class DesktopJavaBeanBridge
             return null;
         }
 
-        $slug = (string) $this->grav['config']->get('plugins.grav-javabean-admin2.active_preset', 'javabean-classic');
+        $slug = $this->activePreset();
         $preset = $this->loadPreset($slug);
         if ($preset === null) {
             return null;
@@ -50,9 +54,7 @@ class DesktopJavaBeanBridge
             return null;
         }
 
-        $slug = (string) $this->grav['config']->get('plugins.grav-javabean-admin2.active_preset', 'javabean-classic');
-
-        return $this->wallpaperBackgroundForPreset($slug);
+        return $this->wallpaperBackgroundForPreset($this->activePreset());
     }
 
     public function wallpaperBackgroundForPreset(string $slug): ?string
@@ -62,7 +64,7 @@ class DesktopJavaBeanBridge
         }
 
         if ($slug === '') {
-            $slug = (string) $this->grav['config']->get('plugins.grav-javabean-admin2.active_preset', 'javabean-classic');
+            $slug = $this->activePreset();
         }
 
         $preset = $this->loadPreset($slug);
@@ -81,11 +83,42 @@ class DesktopJavaBeanBridge
             linear-gradient(145deg, color-mix(in srgb, {$background} 88%, black), color-mix(in srgb, {$background} 70%, {$primary}))";
     }
 
+    private function javabeanEnabled(): bool
+    {
+        if ((bool) $this->grav['config']->get('plugins.' . self::SLUG . '.enabled', false)) {
+            return true;
+        }
+
+        return (bool) $this->grav['config']->get('plugins.' . self::LEGACY_SLUG . '.enabled', false);
+    }
+
+    private function activePreset(): string
+    {
+        $slug = (string) $this->grav['config']->get('plugins.' . self::SLUG . '.active_preset', '');
+        if ($slug !== '') {
+            return $slug;
+        }
+
+        return (string) $this->grav['config']->get('plugins.' . self::LEGACY_SLUG . '.active_preset', 'javabean-classic');
+    }
+
+    private function registryPath(): ?string
+    {
+        foreach ([self::SLUG, self::LEGACY_SLUG] as $pluginSlug) {
+            $path = GRAV_ROOT . '/user/plugins/' . $pluginSlug . '/classes/JavaBeanPresetRegistry.php';
+            if (is_file($path)) {
+                return $path;
+            }
+        }
+
+        return null;
+    }
+
     /** @return array<string, mixed>|null */
     private function loadPreset(string $slug): ?array
     {
-        $path = GRAV_ROOT . '/user/plugins/grav-javabean-admin2/classes/JavaBeanPresetRegistry.php';
-        if (!is_file($path)) {
+        $path = $this->registryPath();
+        if ($path === null) {
             return null;
         }
 

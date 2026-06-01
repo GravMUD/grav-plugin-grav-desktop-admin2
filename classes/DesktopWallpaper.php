@@ -144,7 +144,10 @@ class DesktopWallpaper
 
         $bridge = new DesktopJavaBeanBridge($this->grav);
         if ($bridge->isAvailable()) {
-            require_once GRAV_ROOT . '/user/plugins/grav-javabean-admin2/classes/JavaBeanPresetRegistry.php';
+            $jbSlug = is_file(GRAV_ROOT . '/user/plugins/javabean-admin2/classes/JavaBeanPresetRegistry.php')
+                ? 'javabean-admin2'
+                : 'grav-javabean-admin2';
+            require_once GRAV_ROOT . '/user/plugins/' . $jbSlug . '/classes/JavaBeanPresetRegistry.php';
             if (class_exists(\Grav\Plugin\JavaBeanAdmin2\JavaBeanPresetRegistry::class)) {
                 foreach (\Grav\Plugin\JavaBeanAdmin2\JavaBeanPresetRegistry::all() as $preset) {
                     if (!is_array($preset) || empty($preset['slug'])) {
