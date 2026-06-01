@@ -11,7 +11,7 @@ use Grav\Common\Grav;
  */
 class DesktopRouteCache
 {
-    private const PLUGIN_VERSION = '0.6.0';
+    private const PLUGIN_VERSION = '0.7.0';
 
     public static function maybeInvalidate(Grav $grav): void
     {

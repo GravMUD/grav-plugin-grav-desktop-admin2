@@ -1,0 +1,38 @@
+﻿[
+    {
+        "number":  1,
+        "title":  "Welcome to JavaBean - start here ?",
+        "category":  "General",
+        "body":  "Welcome aboard! This is the home base for **JavaBean for Admin2** ÔÇö free theming for Grav 2\u0027s Admin2 panel.\n\n### Quick links\n- **Landing page:** https://javabean.gravmud.site\n- **Repo:** https://github.com/GravMUD/grav-plugin-grav-javabean-admin2\n- **Latest release:** https://github.com/GravMUD/grav-plugin-grav-javabean-admin2/releases/latest\n\n### Install\nOnce we\u0027re on GPM:\n```bash\nbin/gpm install grav-javabean-admin2\n```\n\nUntil then:\n```bash\nbin/gpm direct-install https://github.com/GravMUD/grav-plugin-grav-javabean-admin2/releases/download/1.0.0/grav-plugin-grav-javabean-admin2.zip\n```\n\nEnable the plugin in Admin2, pick a preset, tweak in **Paint Shop** if you want.\n\n### Where to hang out in Discussions\n| Category | Use it for |\n|----------|------------|\n| **Announcements** | Releases \u0026 news |\n| **Q\u0026A** | Install help, bugs, how-to |\n| **Ideas** | Preset requests, feature ideas |\n| **Show and tell** | Screenshots of your cockpit |\n| **Polls** | Settle important debates (like best preset) |\n\nGrab a mug. Make Admin2 yours. Ôÿò"
+    },
+    {
+        "number":  2,
+        "title":  "Preset \u0026 feature ideas - what should JavaBean brew next?",
+        "category":  "Ideas",
+        "body":  "We shipped **twelve presets** in 1.0.0 ÔÇö but the Paint Shop never closes.\n\n### Preset ideas we\u0027re curious about\n- More **retro terminal** / phosphor greens\n- **High-contrast accessibility** pairs\n- **Brand kits** (Grav orange, sunset, ocean, forestÔÇª)\n- **Seasonal** limited editions (Halloween, solstice, etc.)\n- **Mono-only** cockpits for the purists\n\n### Feature ideas on the table\n- Export/import custom theme JSON\n- Community preset sharing\n- More font slots or local font support\n- Per-user theme overrides in multi-admin setups\n\n**Drop your wish below.** Tell us the vibe, colors, fonts, or Admin2 screens you want themed. Screenshots and mockups welcome.\n\nIf enough people want the same thing, we\u0027ll prioritize it for the next release. Ôÿò"
+    },
+    {
+        "number":  3,
+        "title":  "Q\u0026A - install, presets, Paint Shop, troubleshooting",
+        "category":  "Q\u0026A",
+        "body":  "Stuck? Confused? Just want to know if JavaBean plays nice with your setup? **Ask here.**\n\n### Common starting points\n**Requirements:** Grav 2.0+, admin2, api plugins enabled.\n\n**Manual install:**\n```bash\nbin/gpm direct-install https://github.com/GravMUD/grav-plugin-grav-javabean-admin2/releases/download/1.0.0/grav-plugin-grav-javabean-admin2.zip\n```\n\n**Docs / demos:** https://javabean.gravmud.site\n\n### Good things to include in your question\n- Grav version (`bin/grav --version`)\n- PHP version\n- Whether you\u0027re on Admin2 (not legacy admin)\n- What you expected vs. what happened\n- Screenshots if it\u0027s a visual thing\n\nFor **bugs**, you can also open an [issue](https://github.com/GravMUD/grav-plugin-grav-javabean-admin2/issues) ÔÇö but casual questions belong right here.\n\nNo dumb questions. Only unpainted cockpits. Ôÿò"
+    },
+    {
+        "number":  4,
+        "title":  "JavaBean for Admin2 1.0.0 is live Ôÿò",
+        "category":  "Announcements",
+        "body":  "## We shipped 1.0.0\n\n**Site:** https://javabean.gravmud.site\n**Release:** https://github.com/GravMUD/grav-plugin-grav-javabean-admin2/releases/tag/1.0.0\n**GPM request:** https://github.com/getgrav/grav/issues/4100\n\nJavaBean for Admin2 is free Admin2 theming for Grav 2 ÔÇö twelve preset cockpits, Paint Shop, fourteen-font catalog, Andy appearance sync, and REST API endpoints.\n\n### What\u0027s in the cup\n- 12 presets with paired light/dark token maps\n- Paint Shop ÔÇö accent, density, typography, corners, custom CSS\n- 14 fonts (sans, serif, mono) via Google Fonts\n- Andy Admin2 appearance sync\n- Menubar links to the GravMUD ecosystem\n\n### Install (manual until GPM lists us)\n```bash\nbin/gpm direct-install https://github.com/GravMUD/grav-plugin-grav-javabean-admin2/releases/download/1.0.0/grav-plugin-grav-javabean-admin2.zip\n```\n\nRequires **Grav 2.0**, **admin2**, and **api**.\n\nQuestions? **Q\u0026A**. Preset wishlist? **Ideas**. Screenshots? **Show and tell**.\n\nÔÇö FutureVision Labs ┬À Team DC ┬À GravMUD"
+    },
+    {
+        "number":  5,
+        "title":  "Which JavaBean preset is YOUR cockpit? Ôÿò",
+        "category":  "Polls",
+        "body":  "Time to settle it. **Twelve presets** shipped in 1.0.0 ÔÇö which one are you flying?\n\nPreview them all: https://javabean.gravmud.site\n\n### Vote by replying with your pick:\n- **JavaBean Classic**\n- **Backenders Amber**\n- **WWWeed Emerald**\n- **Team DC Synthwave**\n- **GoGrav! Rally**\n- **Grav Cathedral**\n- **Midnight Ops**\n- **Mambo Desktop**\n- **Mud Bazaar**\n- **EvvyTink Terminal**\n- **Nordic Frost**\n- **High Contrast**\n\nReply with the preset name (or number from the site). Tell us **why** ÔÇö bonus points for screenshots in **Show and tell**.\n\n*(Native GitHub poll widget coming soon ÔÇö API doesn\u0027t support poll creation yet, so we\u0027re doing it old-school.)*"
+    },
+    {
+        "number":  6,
+        "title":  "Show us your JavaBean cockpit ­ƒô©",
+        "category":  "Show and tell",
+        "body":  "Got JavaBean installed? **We want to see it.**\n\nPost screenshots of your Admin2 cockpit ÔÇö preset picks, Paint Shop tweaks, custom CSS experiments, the whole vibe.\n\n### How to share\n1. Install JavaBean (see **Welcome** or **Announcements**)\n2. Screenshot your Admin2 panel\n3. Drop it here with your preset name + any Paint Shop notes\n\n### Inspiration\nBrowse all twelve presets live: https://javabean.gravmud.site\n\nThe best setups might inspire the next official preset. Ôÿò­ƒô©"
+    }
+]

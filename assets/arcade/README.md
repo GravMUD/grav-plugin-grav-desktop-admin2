@@ -1,6 +1,6 @@
-# Team DC Arcade (optional assets)
+﻿# Team DC Arcade (optional assets)
 
-Grav Desktop expects each game as a static web build under this folder. Copy **your** build output here on the server (or dev machine), inside your normal Grav install:
+Mambo Desktop expects each game as a static web build under this folder. Copy **your** build output here on the server (or dev machine), inside your normal Grav install:
 
 ```text
 user/plugins/grav-desktop-admin2/assets/arcade/

@@ -1,4 +1,9 @@
-# Changelog
+﻿# Changelog
+
+## 0.7.0 — 2026-06-02
+
+- **Rebrand:** Product name **Mambo Desktop for Admin2** (Andy/rhuk feedback — avoid confusion with official future Admin2 desktop)
+- Admin2 sidebar, menubar, and UI strings updated; plugin slug `grav-desktop-admin2` and API routes `/grav-desktop/*` unchanged
 
 ## 0.6.0 — 2026-06-01
 
@@ -34,7 +39,7 @@
 ## 0.2.1 — 2026-06-01
 
 - Visual desktop section labels and column dividers (Apps, Admin2, Team DC Arcade, More)
-- Full-bleed plugin page chrome — hides only the Grav Desktop page header, not sidebar titles
+- Full-bleed plugin page chrome — hides only the Mambo Desktop page header, not sidebar titles
 - Double-click launch default aligned across PHP config and frontend
 - Single-click mode respects drag vs open
 - FlapLab in arcade catalog; Lappy Lab removed from bundle script
@@ -51,7 +56,7 @@
 
 ## 0.1.0 — 2026-05-28
 
-- Initial Grav Desktop for Admin2
+- Initial Mambo Desktop for Admin2
 - Icon launcher, windows, taskbar
 - Notepad, Clock, Language, Explorer lite
 - Team DC Arcade hooks (Invaders, Galaga, Magick Emojis, FlapLab)

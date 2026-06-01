@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 
 namespace Grav\Plugin;
 
@@ -108,7 +108,7 @@ class GravDesktopAdmin2Plugin extends Plugin
         $items[] = [
             'id' => 'grav-desktop-admin2',
             'plugin' => 'grav-desktop-admin2',
-            'label' => 'Grav Desktop',
+            'label' => 'Mambo Desktop',
             'icon' => 'fa-desktop',
             'route' => '/plugin/grav-desktop-admin2',
             'priority' => 83,
@@ -129,7 +129,7 @@ class GravDesktopAdmin2Plugin extends Plugin
         $event['definition'] = [
             'id' => 'grav-desktop-admin2',
             'plugin' => 'grav-desktop-admin2',
-            'title' => 'Grav Desktop',
+            'title' => 'Mambo Desktop',
             'icon' => 'fa-desktop',
             'page_type' => 'component',
         ];

@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 
 declare(strict_types=1);
 
@@ -7,7 +7,7 @@ namespace Grav\Plugin\DesktopAdmin2;
 use Grav\Common\Grav;
 
 /**
- * Runtime Grav Desktop menubar shortcut via onApiMenubarItems (no admin-next.yaml writes).
+ * Runtime Mambo Desktop menubar shortcut via onApiMenubarItems (no admin-next.yaml writes).
  */
 class DesktopMenubarLinks
 {
@@ -38,7 +38,7 @@ class DesktopMenubarLinks
         return [[
             'id' => 'grav-desktop-shortcut',
             'plugin' => 'grav-desktop-admin2',
-            'label' => 'Grav Desktop',
+            'label' => 'Mambo Desktop',
             'icon' => 'fa-desktop',
             'url' => $url,
             'external' => false,

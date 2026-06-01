@@ -1,7 +1,7 @@
-name: Grav Desktop for Admin2
+﻿name: Mambo Desktop for Admin2
 slug: grav-desktop-admin2
 type: plugin
-version: 0.6.0
+version: 0.7.0
 description: Web desktop for Admin2 — icon launcher, windows, taskbar, notepad, clock, language switcher, Team DC Arcade.
 icon: desktop
 author:
@@ -24,7 +24,7 @@ form:
   fields:
     enabled:
       type: toggle
-      label: Grav Desktop
+      label: Mambo Desktop
       highlight: 1
       default: 1
       options:
@@ -34,7 +34,7 @@ form:
         type: bool
     show_menubar_shortcut:
       type: toggle
-      label: Show Grav Desktop in Admin2 menubar
+      label: Show Mambo Desktop in Admin2 menubar
       default: 1
       help: Registers a desktop icon via the Admin2 menubar API. Does not write admin-next.yaml.
       options:

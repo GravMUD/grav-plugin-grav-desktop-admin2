@@ -1,12 +1,15 @@
-# Grav Desktop for Admin2
+﻿# Mambo Desktop for Admin2
 
 **Site:** [desktop.gravmud.site](https://desktop.gravmud.site) · **Repo:** [GravMUD/grav-plugin-grav-desktop-admin2](https://github.com/GravMUD/grav-plugin-grav-desktop-admin2) · **Discussions:** [Community](https://github.com/GravMUD/grav-plugin-grav-desktop-admin2/discussions)
+
+> **Display name:** Mambo Desktop for Admin2 (homage to the original Team DC desktop).  
+> **Plugin slug / folder:** `grav-desktop-admin2` — unchanged so GPM installs and existing sites keep working; not the future official Admin2 “desktop” app Andy is building.
 
 Web desktop inside **Grav 2 Admin2** — icon launcher, draggable windows, taskbar, built-in apps, operator tools, sticky notes, and **Team DC Arcade**.
 
 Free **MIT** plugin by **FutureVision Labs · Team DC**.
 
-![Grav Desktop overview](screenshots/desktop-overview.png)
+![Mambo Desktop overview](screenshots/desktop-overview.png)
 
 ## Highlights (v0.6.0)
 
@@ -66,13 +69,13 @@ Works alongside **JavaBean** (chrome) and **Operator Dock** (menubar).
 
 1. Copy `grav-desktop-admin2` into `user/plugins/`
 2. Clear cache: `bin/grav cache`
-3. Open **Grav Desktop** from the Admin2 sidebar
+3. Open **Mambo Desktop** from the Admin2 sidebar
 
 Or install the release zip from [Releases](https://github.com/GravMUD/grav-plugin-grav-desktop-admin2/releases).
 
 ## Configuration
 
-Plugin settings (Admin2 → Plugins → Grav Desktop):
+Plugin settings (Admin2 → Plugins → Mambo Desktop):
 
 - `show_operator_tools` — Phase B apps (default on)
 - `show_delight_features` — master switch for Phase C
@@ -103,7 +106,7 @@ user/plugins/grav-desktop-admin2/assets/arcade/
   flaplab/index.html     ← FlapLab
 ```
 
-Each folder must have an `index.html` at its root (a normal web build / itch export). Grav Desktop opens:
+Each folder must have an `index.html` at its root (a normal web build / itch export). Mambo Desktop opens:
 
 `/user/plugins/grav-desktop-admin2/assets/arcade/{game}/index.html`
 

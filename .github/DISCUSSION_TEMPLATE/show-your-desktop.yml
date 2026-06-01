@@ -1,9 +1,9 @@
-title: Show your desktop
+﻿title: Show your desktop
 labels: []
 body:
   - type: markdown
     value: |
-      Share a screenshot of your Grav Desktop setup — wallpapers, sticky notes, arcade wins, operator tools. Team DC loves a good flight deck.
+      Share a screenshot of your Mambo Desktop setup — wallpapers, sticky notes, arcade wins, operator tools. Team DC loves a good flight deck.
   - type: textarea
     id: screenshot
     attributes:

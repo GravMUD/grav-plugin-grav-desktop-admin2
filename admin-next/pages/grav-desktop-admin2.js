@@ -1,5 +1,5 @@
-/**
- * Grav Desktop — Admin2 full-page web desktop (Team DC).
+﻿/**
+ * Mambo Desktop — Admin2 full-page web desktop (Team DC).
  * Windows, taskbar, built-in apps, Team DC Arcade.
  */
 (function () {
@@ -591,7 +591,7 @@
         </div>
         <div class="gd-taskbar">
           <button type="button" class="gd-start-btn" aria-expanded="false" aria-haspopup="menu">⊞ Start</button>
-          <div class="gd-start-menu" role="menu" aria-label="Grav Desktop apps"></div>
+          <div class="gd-start-menu" role="menu" aria-label="Mambo Desktop apps"></div>
           <div class="gd-taskbar-apps"></div>
           <span class="gd-taskclock" aria-live="polite"></span>
         </div>`;
@@ -668,7 +668,7 @@
         const headings = probe.querySelectorAll('h1');
         for (const h1 of headings) {
           if (this.contains(h1)) continue;
-          if ((h1.textContent || '').trim() !== 'Grav Desktop') continue;
+          if ((h1.textContent || '').trim() !== 'Mambo Desktop') continue;
           const headerRow = h1.closest('.flex.min-w-0')?.parentElement?.parentElement
             || h1.parentElement?.parentElement?.parentElement;
           if (!headerRow || headerRow.closest('nav, aside, [data-sidebar]')) continue;
@@ -1502,7 +1502,7 @@
     mountApiSmoke(body) {
       const checks = [
         { id: 'ping', label: 'API ping', run: () => api('/ping') },
-        { id: 'bootstrap', label: 'Grav Desktop bootstrap', run: () => api('/grav-desktop/bootstrap') },
+        { id: 'bootstrap', label: 'Mambo Desktop bootstrap', run: () => api('/grav-desktop/bootstrap') },
         { id: 'vitals', label: 'Site vitals', run: () => api('/grav-desktop/vitals') },
         { id: 'logs', label: 'Log files registry', run: () => api('/system/logs/files') },
         { id: 'gpm', label: 'GPM search', run: () => api('/gpm/search?q=admin&per_page=3') },

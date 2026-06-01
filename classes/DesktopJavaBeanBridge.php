@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 
 declare(strict_types=1);
 
@@ -7,7 +7,7 @@ namespace Grav\Plugin\DesktopAdmin2;
 use Grav\Common\Grav;
 
 /**
- * Optional JavaBean preset → Grav Desktop wallpaper (no hard dependency on JavaBean plugin class autoload).
+ * Optional JavaBean preset → Mambo Desktop wallpaper (no hard dependency on JavaBean plugin class autoload).
  */
 class DesktopJavaBeanBridge
 {

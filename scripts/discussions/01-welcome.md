@@ -1,4 +1,4 @@
-Welcome aboard! This is the home base for **Grav Desktop for Admin2** — a free web desktop inside Grav 2's Admin2 panel.
+﻿Welcome aboard! This is the home base for **Mambo Desktop for Admin2** — a free web desktop inside Grav 2's Admin2 panel.
 
 ### Quick links
 - **Landing page:** https://desktop.gravmud.site
@@ -12,7 +12,7 @@ bin/gpm direct-install https://github.com/GravMUD/grav-plugin-grav-desktop-admin
 
 Or copy to `user/plugins/grav-desktop-admin2` and run `bin/grav cache`.
 
-Requires **Grav 2.0**, **admin2**, and **api**. Open **Grav Desktop** from the Admin2 sidebar.
+Requires **Grav 2.0**, **admin2**, and **api**. Open **Mambo Desktop** from the Admin2 sidebar.
 
 ### Pairs with
 - **[JavaBean](https://javabean.gravmud.site)** — themes the chrome; Desktop uses JavaBean wallpapers on the preset strip

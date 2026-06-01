@@ -1,5 +1,5 @@
-/**
- * Grav Desktop — dashboard clock widget.
+﻿/**
+ * Mambo Desktop — dashboard clock widget.
  */
 (function () {
   const TAG = window.__GRAV_WIDGET_TAG || 'grav-widget-grav-desktop-clock';
@@ -8,7 +8,7 @@
     connectedCallback() {
       this.innerHTML = `
         <div class="flex h-full flex-col items-center justify-center gap-1 rounded-lg border border-border bg-card p-4 text-center">
-          <div class="text-xs font-medium uppercase tracking-wide text-muted-foreground">Grav Desktop</div>
+          <div class="text-xs font-medium uppercase tracking-wide text-muted-foreground">Mambo Desktop</div>
           <div class="gdw-time text-2xl font-bold tabular-nums text-foreground">--:--</div>
           <div class="gdw-date text-xs text-muted-foreground"></div>
         </div>`;
