@@ -109,7 +109,9 @@ Each folder must have an `index.html` at its root (a normal web build / itch exp
 
 inside a window.
 
-**Where to get builds:** your own game project output, Team DC itch releases, or a future optional arcade add-on zip from [Releases](https://github.com/GravMUD/grav-plugin-grav-desktop-admin2/releases). You do **not** need any special repo name on your machine — only a standard Grav root with this plugin installed.
+**Easy install:** download [`grav-desktop-arcade-bundle.zip`](https://github.com/GravMUD/grav-plugin-grav-desktop-admin2/releases/latest/download/grav-desktop-arcade-bundle.zip) from [Releases](https://github.com/GravMUD/grav-plugin-grav-desktop-admin2/releases), then extract **into** `user/plugins/grav-desktop-admin2/assets/arcade/` (see `INSTALL.txt` inside the zip).
+
+You can also use your own static builds or Team DC itch exports. No special repo layout — only a normal Grav root with this plugin installed.
 
 Without those folders, arcade icons still appear; opening them shows a missing-game message until you add the files.
 
