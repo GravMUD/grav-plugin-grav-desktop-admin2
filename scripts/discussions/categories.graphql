@@ -1,5 +1,5 @@
-query {
-  repository(owner: "GravMUD", name: "grav-plugin-grav-desktop-admin2") {
+﻿query {
+  repository(owner: "GravMUD", name: "grav-plugin-mambo-desktop-admin2") {
     discussionCategories(first: 20) {
       nodes { id name }
     }

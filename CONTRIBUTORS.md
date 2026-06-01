@@ -1,4 +1,4 @@
-# Contributors
+﻿# Contributors
 
 ## Lead
 
@@ -9,4 +9,4 @@
 - **Andy (rhuk)** & Grav team — Admin2 foundation
 - **Team DC** — arcade game builds, JavaBean wallpaper bridge, operator dock pairing
 
-Want to be listed? Open a PR or post in [Discussions](https://github.com/GravMUD/grav-plugin-grav-desktop-admin2/discussions).
+Want to be listed? Open a PR or post in [Discussions](https://github.com/GravMUD/grav-plugin-mambo-desktop-admin2/discussions).

@@ -3,7 +3,7 @@
 Mambo Desktop expects each game as a static web build under this folder. Copy **your** build output here on the server (or dev machine), inside your normal Grav install:
 
 ```text
-user/plugins/grav-desktop-admin2/assets/arcade/
+user/plugins/mambo-desktop-admin2/assets/arcade/
   invaders/index.html
   galaga/index.html
   magick/index.html

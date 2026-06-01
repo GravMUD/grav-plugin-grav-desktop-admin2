@@ -2,7 +2,7 @@
  * Mambo Desktop — dashboard clock widget.
  */
 (function () {
-  const TAG = window.__GRAV_WIDGET_TAG || 'grav-widget-grav-desktop-clock';
+  const TAG = window.__GRAV_WIDGET_TAG || 'grav-widget-mambo-desktop-clock';
 
   class DesktopClockWidget extends HTMLElement {
     connectedCallback() {

@@ -1,8 +1,8 @@
-<?php
+﻿<?php
 
 declare(strict_types=1);
 
-namespace Grav\Plugin\DesktopAdmin2;
+namespace Grav\Plugin\MamboDesktopAdmin2;
 
 use Grav\Common\Grav;
 
@@ -18,7 +18,7 @@ class DesktopAppRegistry
         /** @var \Grav\Common\Uri $uri */
         $uri = $this->grav['uri'];
         $root = rtrim($uri->rootUrl(false), '/');
-        $arcadeBase = $root . '/user/plugins/grav-desktop-admin2/assets/arcade';
+        $arcadeBase = $root . '/user/plugins/mambo-desktop-admin2/assets/arcade';
         $adminBase = rtrim((string) ($this->grav['config']->get('plugins.admin2.route', '/admin')), '/');
         if ($adminBase === '') {
             $adminBase = '/admin';
@@ -27,7 +27,7 @@ class DesktopAppRegistry
             $adminBase = '/' . $adminBase;
         }
 
-        $cfg = (array) $this->grav['config']->get('plugins.grav-desktop-admin2', []);
+        $cfg = (array) $this->grav['config']->get('plugins.mambo-desktop-admin2', []);
         $username = ($user && method_exists($user, 'get')) ? (string) ($user->get('username') ?? 'admin') : 'admin';
         $wallpaperSvc = new DesktopWallpaper($this->grav);
         $userPrefs = $wallpaperSvc->userPrefs($username);
@@ -275,7 +275,7 @@ class DesktopAppRegistry
 
         $apps = [];
         foreach ($catalog as $game) {
-            $path = GRAV_ROOT . '/user/plugins/grav-desktop-admin2/assets/arcade/' . $game['folder'] . '/index.html';
+            $path = GRAV_ROOT . '/user/plugins/mambo-desktop-admin2/assets/arcade/' . $game['folder'] . '/index.html';
             $apps[] = [
                 'id' => 'arcade-' . $game['id'],
                 'label' => $game['label'],

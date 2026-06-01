@@ -1,4 +1,4 @@
-# Seed GitHub Discussions for grav-plugin-grav-desktop-admin2
+# Seed GitHub Discussions for grav-plugin-mambo-desktop-admin2
 $ErrorActionPreference = "Stop"
 $gh = "$env:ProgramFiles\GitHub CLI\gh.exe"
 $root = Split-Path -Parent $PSScriptRoot
@@ -7,10 +7,10 @@ $manifest = Get-Content (Join-Path $discDir "manifest.json") -Raw | ConvertFrom-
 
 $existing = @()
 try {
-    $existing = & $gh api "repos/GravMUD/grav-plugin-grav-desktop-admin2/discussions?per_page=20" --jq '.[].title' 2>$null
+    $existing = & $gh api "repos/GravMUD/grav-plugin-mambo-desktop-admin2/discussions?per_page=20" --jq '.[].title' 2>$null
 } catch {}
 
-$repoId = & $gh api repos/GravMUD/grav-plugin-grav-desktop-admin2 --jq .node_id
+$repoId = & $gh api repos/GravMUD/grav-plugin-mambo-desktop-admin2 --jq .node_id
 $catQueryFile = Join-Path $discDir "categories.graphql"
 $catsJson = & $gh api graphql -F query=@$catQueryFile
 $catMap = @{}

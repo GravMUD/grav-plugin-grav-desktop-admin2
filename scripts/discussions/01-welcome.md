@@ -2,15 +2,15 @@
 
 ### Quick links
 - **Landing page:** https://desktop.gravmud.site
-- **Repo:** https://github.com/GravMUD/grav-plugin-grav-desktop-admin2
-- **Latest release:** https://github.com/GravMUD/grav-plugin-grav-desktop-admin2/releases/latest
+- **Repo:** https://github.com/GravMUD/grav-plugin-mambo-desktop-admin2
+- **Latest release:** https://github.com/GravMUD/grav-plugin-mambo-desktop-admin2/releases/latest
 
 ### Install
 ```bash
-bin/gpm direct-install https://github.com/GravMUD/grav-plugin-grav-desktop-admin2/releases/download/v0.6.0/grav-plugin-grav-desktop-admin2.zip
+bin/gpm direct-install https://github.com/GravMUD/grav-plugin-mambo-desktop-admin2/releases/download/v0.6.0/grav-plugin-mambo-desktop-admin2.zip
 ```
 
-Or copy to `user/plugins/grav-desktop-admin2` and run `bin/grav cache`.
+Or copy to `user/plugins/mambo-desktop-admin2` and run `bin/grav cache`.
 
 Requires **Grav 2.0**, **admin2**, and **api**. Open **Mambo Desktop** from the Admin2 sidebar.
 

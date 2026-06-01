@@ -9,8 +9,8 @@ $updateFile = Join-Path $discDir "update-title.graphql"
 for ($i = 0; $i -lt $manifest.Count; $i++) {
     $num = $i + 1
     $want = $manifest[$i].title
-    $nodeId = & $gh api "repos/GravMUD/grav-plugin-grav-desktop-admin2/discussions/$num" --jq .node_id
-    $have = & $gh api "repos/GravMUD/grav-plugin-grav-desktop-admin2/discussions/$num" --jq .title
+    $nodeId = & $gh api "repos/GravMUD/grav-plugin-mambo-desktop-admin2/discussions/$num" --jq .node_id
+    $have = & $gh api "repos/GravMUD/grav-plugin-mambo-desktop-admin2/discussions/$num" --jq .title
     if ($have -eq $want) {
         Write-Host "OK #$num already: $want"
         continue

@@ -1,13 +1,13 @@
-<?php
+﻿<?php
 
 declare(strict_types=1);
 
-namespace Grav\Plugin\DesktopAdmin2;
+namespace Grav\Plugin\MamboDesktopAdmin2;
 
 use Grav\Common\Grav;
 
 /**
- * Per-admin-user data under user://data/grav-desktop-admin2/
+ * Per-admin-user data under user://data/mambo-desktop-admin2/
  */
 class DesktopUserStore
 {
@@ -24,9 +24,15 @@ class DesktopUserStore
 
     public function dataDir(): string
     {
-        $dir = $this->grav['locator']->findResource('user://data/grav-desktop-admin2', true, true);
+        $dir = $this->grav['locator']->findResource('user://data/mambo-desktop-admin2', true, true);
         if (!$dir) {
-            throw new \RuntimeException('Unable to resolve grav-desktop data directory.');
+            throw new \RuntimeException('Unable to resolve mambo-desktop data directory.');
+        }
+        if (!is_dir($dir)) {
+            $legacy = $this->grav['locator']->findResource('user://data/grav-desktop-admin2', true, true);
+            if ($legacy && is_dir($legacy)) {
+                @rename($legacy, $dir);
+            }
         }
         if (!is_dir($dir)) {
             mkdir($dir, 0755, true);

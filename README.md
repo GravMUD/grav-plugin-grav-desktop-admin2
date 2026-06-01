@@ -1,9 +1,9 @@
 ﻿# Mambo Desktop for Admin2
 
-**Site:** [desktop.gravmud.site](https://desktop.gravmud.site) · **Repo:** [GravMUD/grav-plugin-grav-desktop-admin2](https://github.com/GravMUD/grav-plugin-grav-desktop-admin2) · **Discussions:** [Community](https://github.com/GravMUD/grav-plugin-grav-desktop-admin2/discussions)
+**Site:** [desktop.gravmud.site](https://desktop.gravmud.site) · **Repo:** [GravMUD/grav-plugin-mambo-desktop-admin2](https://github.com/GravMUD/grav-plugin-mambo-desktop-admin2) · **Discussions:** [Community](https://github.com/GravMUD/grav-plugin-mambo-desktop-admin2/discussions)
 
-> **Display name:** Mambo Desktop for Admin2 (homage to the original Team DC desktop).  
-> **Plugin slug / folder:** `grav-desktop-admin2` — unchanged so GPM installs and existing sites keep working; not the future official Admin2 “desktop” app Andy is building.
+> **GPM:** `bin/gpm install mambo-desktop-admin2` (once listed)  
+> **Upgrading from `grav-desktop-admin2`?** Remove the old plugin, install this slug, copy `user/data/grav-desktop-admin2/` → `user/data/mambo-desktop-admin2/` to keep saved data.
 
 Web desktop inside **Grav 2 Admin2** — icon launcher, draggable windows, taskbar, built-in apps, operator tools, sticky notes, and **Team DC Arcade**.
 
@@ -67,11 +67,11 @@ Works alongside **JavaBean** (chrome) and **Operator Dock** (menubar).
 
 ## Install
 
-1. Copy `grav-desktop-admin2` into `user/plugins/`
+1. Copy `mambo-desktop-admin2` into `user/plugins/`
 2. Clear cache: `bin/grav cache`
 3. Open **Mambo Desktop** from the Admin2 sidebar
 
-Or install the release zip from [Releases](https://github.com/GravMUD/grav-plugin-grav-desktop-admin2/releases).
+Or install the release zip from [Releases](https://github.com/GravMUD/grav-plugin-mambo-desktop-admin2/releases).
 
 ## Configuration
 
@@ -86,20 +86,20 @@ Plugin settings (Admin2 → Plugins → Mambo Desktop):
 
 | Method | Path |
 |--------|------|
-| GET | `/grav-desktop/bootstrap` |
-| GET/PATCH | `/grav-desktop/notepad` |
-| GET/PATCH | `/grav-desktop/sticky-notes` |
-| GET/PATCH | `/grav-desktop/wallpaper-prefs` |
-| GET/POST/DELETE | `/grav-desktop/wallpaper/custom` |
-| GET/PATCH | `/grav-desktop/maintenance` |
-| GET | `/grav-desktop/vitals`, `/recent-pages`, `/explorer` |
+| GET | `/mambo-desktop/bootstrap` |
+| GET/PATCH | `/mambo-desktop/notepad` |
+| GET/PATCH | `/mambo-desktop/sticky-notes` |
+| GET/PATCH | `/mambo-desktop/wallpaper-prefs` |
+| GET/POST/DELETE | `/mambo-desktop/wallpaper/custom` |
+| GET/PATCH | `/mambo-desktop/maintenance` |
+| GET | `/mambo-desktop/vitals`, `/recent-pages`, `/explorer` |
 
 ## Arcade bundle (optional)
 
 The desktop **lists** four Team DC games, but the game files are **not** in the plugin zip (they are large). After install, copy each game's static build into your Grav site:
 
 ```text
-user/plugins/grav-desktop-admin2/assets/arcade/
+user/plugins/mambo-desktop-admin2/assets/arcade/
   invaders/index.html    ← Emoji Invaders
   galaga/index.html      ← Emoji Galaga
   magick/index.html      ← Magick Emojis
@@ -108,11 +108,11 @@ user/plugins/grav-desktop-admin2/assets/arcade/
 
 Each folder must have an `index.html` at its root (a normal web build / itch export). Mambo Desktop opens:
 
-`/user/plugins/grav-desktop-admin2/assets/arcade/{game}/index.html`
+`/user/plugins/mambo-desktop-admin2/assets/arcade/{game}/index.html`
 
 inside a window.
 
-**Easy install:** download [`grav-desktop-arcade-bundle.zip`](https://github.com/GravMUD/grav-plugin-grav-desktop-admin2/releases/latest/download/grav-desktop-arcade-bundle.zip) from [Releases](https://github.com/GravMUD/grav-plugin-grav-desktop-admin2/releases), then extract **into** `user/plugins/grav-desktop-admin2/assets/arcade/` (see `INSTALL.txt` inside the zip).
+**Easy install:** download [`mambo-desktop-arcade-bundle.zip`](https://github.com/GravMUD/grav-plugin-mambo-desktop-admin2/releases/latest/download/mambo-desktop-arcade-bundle.zip) from [Releases](https://github.com/GravMUD/grav-plugin-mambo-desktop-admin2/releases), then extract **into** `user/plugins/mambo-desktop-admin2/assets/arcade/` (see `INSTALL.txt` inside the zip).
 
 You can also use your own static builds or Team DC itch exports. No special repo layout — only a normal Grav root with this plugin installed.
 

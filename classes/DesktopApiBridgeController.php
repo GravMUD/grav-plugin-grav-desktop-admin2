@@ -1,8 +1,8 @@
-<?php
+﻿<?php
 
 declare(strict_types=1);
 
-namespace Grav\Plugin\DesktopAdmin2;
+namespace Grav\Plugin\MamboDesktopAdmin2;
 
 use Grav\Framework\Psr7\Response;
 use Grav\Plugin\Api\Controllers\AbstractApiController;
@@ -156,7 +156,7 @@ class DesktopApiBridgeController extends AbstractApiController
         }
 
         usort($items, static fn(array $a, array $b): int => ($b['modified'] ?? 0) <=> ($a['modified'] ?? 0));
-        $limit = max(1, min(20, (int) ($this->grav['config']->get('plugins.grav-desktop-admin2.recent_pages_limit', 5))));
+        $limit = max(1, min(20, (int) ($this->grav['config']->get('plugins.mambo-desktop-admin2.recent_pages_limit', 5))));
 
         return ApiResponse::create([
             'pages' => array_slice($items, 0, $limit),
@@ -363,9 +363,9 @@ class DesktopApiBridgeController extends AbstractApiController
     private function notepadPath(string $username): string
     {
         $safe = preg_replace('/[^a-zA-Z0-9._-]+/', '-', $username) ?: 'admin';
-        $dir = $this->grav['locator']->findResource('user://data/grav-desktop-admin2', true, true);
+        $dir = $this->grav['locator']->findResource('user://data/mambo-desktop-admin2', true, true);
         if (!$dir) {
-            throw new \RuntimeException('Unable to resolve grav-desktop data directory.');
+            throw new \RuntimeException('Unable to resolve mambo-desktop data directory.');
         }
         if (!is_dir($dir)) {
             mkdir($dir, 0755, true);

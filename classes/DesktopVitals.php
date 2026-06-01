@@ -1,8 +1,8 @@
-<?php
+﻿<?php
 
 declare(strict_types=1);
 
-namespace Grav\Plugin\DesktopAdmin2;
+namespace Grav\Plugin\MamboDesktopAdmin2;
 
 use Grav\Common\Grav;
 

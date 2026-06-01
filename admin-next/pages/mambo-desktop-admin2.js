@@ -3,7 +3,7 @@
  * Windows, taskbar, built-in apps, Team DC Arcade.
  */
 (function () {
-  const TAG = window.__GRAV_PAGE_TAG || 'grav-grav-desktop-admin2--page';
+  const TAG = window.__GRAV_PAGE_TAG || 'grav-mambo-desktop-admin2--page';
 
   function apiConfig() {
     return {
@@ -83,7 +83,7 @@
   const ICON_GAP = 14;
   const ICON_TOP = 18;
   const ICON_LEFT = 18;
-  const ICON_LAYOUT_KEY = 'grav-desktop-icon-layout.v2';
+  const ICON_LAYOUT_KEY = 'mambo-desktop-icon-layout.v2';
   const WINDOWS_SESSION_VERSION = 'v2';
 
   const WALLPAPERS = {
@@ -748,7 +748,7 @@
       const cfg = apiConfig();
       const headers = { Accept: 'image/webp,image/*' };
       if (cfg.token) headers['X-API-Token'] = cfg.token;
-      const res = await fetch(apiUrl('/grav-desktop/wallpaper/custom'), { headers });
+      const res = await fetch(apiUrl('/mambo-desktop/wallpaper/custom'), { headers });
       if (!res.ok) throw new Error(`Wallpaper HTTP ${res.status}`);
       const blob = await res.blob();
       if (this._customWallpaperUrl) URL.revokeObjectURL(this._customWallpaperUrl);
@@ -779,7 +779,7 @@
     async applyWallpaperMode(wallpaperId) {
       this._wallpaper = wallpaperId;
       try {
-        const patch = await api('/grav-desktop/wallpaper-prefs', {
+        const patch = await api('/mambo-desktop/wallpaper-prefs', {
           method: 'PATCH',
           body: JSON.stringify({
             wallpaper: wallpaperId,
@@ -797,7 +797,7 @@
 
     async bootstrap() {
       try {
-        const data = await api('/grav-desktop/bootstrap');
+        const data = await api('/mambo-desktop/bootstrap');
         this._apps = data.apps || [];
         this._sections = data.sections || [];
         this._adminBase = data.adminBase || apiConfig().adminBase || '';
@@ -846,7 +846,7 @@
         { id: 'notepad', label: 'Notepad', icon: '📝', group: 'utilities', kind: 'builtin', builtin: 'notepad' },
         { id: 'clock', label: 'Clock', icon: '🕐', group: 'utilities', kind: 'builtin', builtin: 'clock' },
         { id: 'explorer', label: 'Explorer', icon: '📁', group: 'utilities', kind: 'builtin', builtin: 'explorer' },
-        { id: 'arcade-invaders', label: 'Emoji Invaders', icon: '👾', group: 'arcade', kind: 'iframe', bundled: true, url: `${root}/user/plugins/grav-desktop-admin2/assets/arcade/invaders/index.html` },
+        { id: 'arcade-invaders', label: 'Emoji Invaders', icon: '👾', group: 'arcade', kind: 'iframe', bundled: true, url: `${root}/user/plugins/mambo-desktop-admin2/assets/arcade/invaders/index.html` },
       ];
     }
 
@@ -1227,10 +1227,10 @@
         </div>`;
       const ta = body.querySelector('textarea');
       const saveBtn = body.querySelector('button');
-      api('/grav-desktop/notepad').then((d) => { ta.value = d.content || ''; }).catch(() => {});
+      api('/mambo-desktop/notepad').then((d) => { ta.value = d.content || ''; }).catch(() => {});
       saveBtn.addEventListener('click', async () => {
         try {
-          await api('/grav-desktop/notepad', { method: 'PATCH', body: JSON.stringify({ content: ta.value }) });
+          await api('/mambo-desktop/notepad', { method: 'PATCH', body: JSON.stringify({ content: ta.value }) });
           this.flashStatus('Notepad saved');
         } catch (err) {
           this.flashStatus(err.message, true);
@@ -1295,7 +1295,7 @@
       });
       const list = body.querySelector('.gd-explorer-list');
       try {
-        const data = await api('/grav-desktop/explorer');
+        const data = await api('/mambo-desktop/explorer');
         const pages = data.pages || [];
         if (!pages.length) {
           list.innerHTML = '<li><button type="button" disabled>No routable pages</button></li>';
@@ -1321,7 +1321,7 @@
       body.innerHTML = `<div class="gd-vitals"><p class="gd-muted">Loading vitals…</p></div>`;
       const base = this._adminBase || apiConfig().adminBase || '';
       try {
-        const v = await api('/grav-desktop/vitals');
+        const v = await api('/mambo-desktop/vitals');
         const jb = v.javabean;
         const jbNote = jb
           ? `<p class="gd-vitals-note">JavaBean: <strong>${esc(jb.name)}</strong>${jb.tagline ? ` — ${esc(jb.tagline)}` : ''}. <a href="${esc(base)}/plugin/grav-javabean-admin2">Open JavaBean</a></p>`
@@ -1359,7 +1359,7 @@
       });
       const list = body.querySelector('.gd-recent-list');
       try {
-        const data = await api('/grav-desktop/recent-pages');
+        const data = await api('/mambo-desktop/recent-pages');
         const pages = data.pages || [];
         if (!pages.length) {
           list.innerHTML = '<li><button type="button" disabled>No recently modified pages</button></li>';
@@ -1475,7 +1475,7 @@
       };
 
       try {
-        paint(await api('/grav-desktop/maintenance'));
+        paint(await api('/mambo-desktop/maintenance'));
       } catch (err) {
         status.textContent = err.message;
         toggle.disabled = true;
@@ -1485,7 +1485,7 @@
       toggle.addEventListener('change', async () => {
         toggle.disabled = true;
         try {
-          paint(await api('/grav-desktop/maintenance', {
+          paint(await api('/mambo-desktop/maintenance', {
             method: 'PATCH',
             body: JSON.stringify({ enabled: toggle.checked }),
           }));
@@ -1502,8 +1502,8 @@
     mountApiSmoke(body) {
       const checks = [
         { id: 'ping', label: 'API ping', run: () => api('/ping') },
-        { id: 'bootstrap', label: 'Mambo Desktop bootstrap', run: () => api('/grav-desktop/bootstrap') },
-        { id: 'vitals', label: 'Site vitals', run: () => api('/grav-desktop/vitals') },
+        { id: 'bootstrap', label: 'Mambo Desktop bootstrap', run: () => api('/mambo-desktop/bootstrap') },
+        { id: 'vitals', label: 'Site vitals', run: () => api('/mambo-desktop/vitals') },
         { id: 'logs', label: 'Log files registry', run: () => api('/system/logs/files') },
         { id: 'gpm', label: 'GPM search', run: () => api('/gpm/search?q=admin&per_page=3') },
       ];
@@ -1639,7 +1639,7 @@
         const fd = new FormData();
         fd.append('file', file);
         try {
-          await apiUpload('/grav-desktop/wallpaper/custom', fd);
+          await apiUpload('/mambo-desktop/wallpaper/custom', fd);
           this._customWallpaper = true;
           this._wallpaper = 'custom';
           await this.applyCustomWallpaperImage();
@@ -1663,7 +1663,7 @@
     async loadStickyNotes() {
       if (!this._showStickyNotes || !this._stickyLayerEl) return;
       try {
-        const data = await api('/grav-desktop/sticky-notes');
+        const data = await api('/mambo-desktop/sticky-notes');
         this._stickyNotes = data.notes || [];
       } catch {
         this._stickyNotes = [];
@@ -1768,7 +1768,7 @@
     async saveStickyNotes() {
       if (!this._showStickyNotes) return;
       try {
-        const data = await api('/grav-desktop/sticky-notes', {
+        const data = await api('/mambo-desktop/sticky-notes', {
           method: 'PATCH',
           body: JSON.stringify({ notes: this._stickyNotes }),
         });
@@ -2036,7 +2036,7 @@
     windowSessionKey() {
       const base = (this._adminBase || apiConfig().adminBase || '/admin').replace(/\/+$/, '') || '/admin';
       const user = (this._username || 'admin').replace(/[^a-zA-Z0-9._-]+/g, '-');
-      return `grav-desktop-windows.${WINDOWS_SESSION_VERSION}::${base}::${user}`;
+      return `mambo-desktop-windows.${WINDOWS_SESSION_VERSION}::${base}::${user}`;
     }
 
     loadWindowSession() {

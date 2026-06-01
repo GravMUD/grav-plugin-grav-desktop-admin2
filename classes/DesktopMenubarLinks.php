@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Grav\Plugin\DesktopAdmin2;
+namespace Grav\Plugin\MamboDesktopAdmin2;
 
 use Grav\Common\Grav;
 
@@ -17,7 +17,7 @@ class DesktopMenubarLinks
 
     public function shouldInject(): bool
     {
-        $cfg = (array) $this->grav['config']->get('plugins.grav-desktop-admin2', []);
+        $cfg = (array) $this->grav['config']->get('plugins.mambo-desktop-admin2', []);
 
         return !empty($cfg['enabled']) && !empty($cfg['show_menubar_shortcut']);
     }
@@ -33,11 +33,11 @@ class DesktopMenubarLinks
         /** @var \Grav\Common\Uri $uri */
         $uri = $this->grav['uri'];
         $root = rtrim($uri->rootUrl(false), '/');
-        $url = $root . '/' . $adminRoute . '/plugin/grav-desktop-admin2';
+        $url = $root . '/' . $adminRoute . '/plugin/mambo-desktop-admin2';
 
         return [[
-            'id' => 'grav-desktop-shortcut',
-            'plugin' => 'grav-desktop-admin2',
+            'id' => 'mambo-desktop-shortcut',
+            'plugin' => 'mambo-desktop-admin2',
             'label' => 'Mambo Desktop',
             'icon' => 'fa-desktop',
             'url' => $url,

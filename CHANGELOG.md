@@ -1,22 +1,28 @@
 ﻿# Changelog
 
+## 1.0.0 — 2026-06-02
+
+- **Slug rename (Andy convention):** `mambo-desktop-admin2` — folder, config, GPM slug, API routes `/mambo-desktop/*`
+- GitHub repo: `grav-plugin-mambo-desktop-admin2`
+- **Breaking:** replace `grav-desktop-admin2` plugin folder; copy `user/data/grav-desktop-admin2/` → `user/data/mambo-desktop-admin2/` to keep notepad/stickies/wallpapers
+- Product name: **Mambo Desktop for Admin2**
+
 ## 0.7.0 — 2026-06-02
 
-- **Rebrand:** Product name **Mambo Desktop for Admin2** (Andy/rhuk feedback — avoid confusion with official future Admin2 desktop)
-- Admin2 sidebar, menubar, and UI strings updated; plugin slug `grav-desktop-admin2` and API routes `/grav-desktop/*` unchanged
+- Display name **Mambo Desktop for Admin2** (slug was still `grav-desktop-admin2` until 1.0.0)
 
 ## 0.6.0 — 2026-06-01
 
 - **Phase C — Delight:** Sticky notes on the desktop (draggable, per-user server save)
 - Wallpaper **preset strip** above the taskbar (built-ins + JavaBean presets + custom)
 - **Custom wallpaper upload** per admin user (WebP, via API)
-- User wallpaper prefs API (`GET/PATCH /grav-desktop/wallpaper-prefs`, custom image routes)
+- User wallpaper prefs API (`GET/PATCH /mambo-desktop/wallpaper-prefs`, custom image routes)
 
 ## 0.5.0 — 2026-06-01
 
 - **Phase B — Operator power:** Log Tail, Maintenance toggle (`.upgrading`), API Smoke Test, GPM quick search
 - Operator app group on desktop + Start menu
-- `GET/PATCH /grav-desktop/maintenance` for maintenance flag
+- `GET/PATCH /mambo-desktop/maintenance` for maintenance flag
 
 ## 0.4.0 — 2026-06-01
 
@@ -30,7 +36,7 @@
 - Recent Pages app — last edited routable pages with one-click open in Admin2 Pages editor
 - JavaBean wallpaper mode — desktop background follows active JavaBean preset dark tokens
 - Spotify embed on by default when a playlist URL is configured
-- API routes `/grav-desktop/vitals` and `/grav-desktop/recent-pages`
+- API routes `/mambo-desktop/vitals` and `/mambo-desktop/recent-pages`
 
 ## 0.2.2 — 2026-06-01
 

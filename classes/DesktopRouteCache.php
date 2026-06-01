@@ -1,8 +1,8 @@
-<?php
+﻿<?php
 
 declare(strict_types=1);
 
-namespace Grav\Plugin\DesktopAdmin2;
+namespace Grav\Plugin\MamboDesktopAdmin2;
 
 use Grav\Common\Grav;
 
@@ -11,7 +11,7 @@ use Grav\Common\Grav;
  */
 class DesktopRouteCache
 {
-    private const PLUGIN_VERSION = '0.7.0';
+    private const PLUGIN_VERSION = '1.0.0';
 
     public static function maybeInvalidate(Grav $grav): void
     {
@@ -20,7 +20,7 @@ class DesktopRouteCache
             return;
         }
 
-        $markerDir = $dataRoot . '/grav-desktop-admin2';
+        $markerDir = $dataRoot . '/mambo-desktop-admin2';
         if (!is_dir($markerDir)) {
             mkdir($markerDir, 0775, true);
         }

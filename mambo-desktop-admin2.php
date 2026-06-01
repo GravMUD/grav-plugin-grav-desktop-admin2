@@ -3,12 +3,12 @@
 namespace Grav\Plugin;
 
 use Grav\Common\Plugin;
-use Grav\Plugin\DesktopAdmin2\DesktopApiBridgeController;
-use Grav\Plugin\DesktopAdmin2\DesktopMenubarLinks;
-use Grav\Plugin\DesktopAdmin2\DesktopRouteCache;
+use Grav\Plugin\MamboDesktopAdmin2\DesktopApiBridgeController;
+use Grav\Plugin\MamboDesktopAdmin2\DesktopMenubarLinks;
+use Grav\Plugin\MamboDesktopAdmin2\DesktopRouteCache;
 use RocketTheme\Toolbox\Event\Event;
 
-class GravDesktopAdmin2Plugin extends Plugin
+class GravMamboDesktopAdmin2Plugin extends Plugin
 {
     public static function getSubscribedEvents(): array
     {
@@ -61,15 +61,15 @@ class GravDesktopAdmin2Plugin extends Plugin
         $routes = $event['routes'];
         $controller = DesktopApiBridgeController::class;
 
-        $routes->addRoute(['GET', 'OPTIONS'], '/grav-desktop/bootstrap', [$controller, 'bootstrap']);
-        $routes->addRoute(['GET', 'PATCH', 'OPTIONS'], '/grav-desktop/notepad', [$controller, 'notepad']);
-        $routes->addRoute(['GET', 'OPTIONS'], '/grav-desktop/explorer', [$controller, 'explorer']);
-        $routes->addRoute(['GET', 'OPTIONS'], '/grav-desktop/vitals', [$controller, 'vitals']);
-        $routes->addRoute(['GET', 'OPTIONS'], '/grav-desktop/recent-pages', [$controller, 'recentPages']);
-        $routes->addRoute(['GET', 'PATCH', 'OPTIONS'], '/grav-desktop/maintenance', [$controller, 'maintenance']);
-        $routes->addRoute(['GET', 'PATCH', 'OPTIONS'], '/grav-desktop/sticky-notes', [$controller, 'stickyNotes']);
-        $routes->addRoute(['GET', 'PATCH', 'OPTIONS'], '/grav-desktop/wallpaper-prefs', [$controller, 'wallpaperPrefs']);
-        $routes->addRoute(['GET', 'POST', 'DELETE', 'OPTIONS'], '/grav-desktop/wallpaper/custom', [$controller, 'wallpaperCustom']);
+        $routes->addRoute(['GET', 'OPTIONS'], '/mambo-desktop/bootstrap', [$controller, 'bootstrap']);
+        $routes->addRoute(['GET', 'PATCH', 'OPTIONS'], '/mambo-desktop/notepad', [$controller, 'notepad']);
+        $routes->addRoute(['GET', 'OPTIONS'], '/mambo-desktop/explorer', [$controller, 'explorer']);
+        $routes->addRoute(['GET', 'OPTIONS'], '/mambo-desktop/vitals', [$controller, 'vitals']);
+        $routes->addRoute(['GET', 'OPTIONS'], '/mambo-desktop/recent-pages', [$controller, 'recentPages']);
+        $routes->addRoute(['GET', 'PATCH', 'OPTIONS'], '/mambo-desktop/maintenance', [$controller, 'maintenance']);
+        $routes->addRoute(['GET', 'PATCH', 'OPTIONS'], '/mambo-desktop/sticky-notes', [$controller, 'stickyNotes']);
+        $routes->addRoute(['GET', 'PATCH', 'OPTIONS'], '/mambo-desktop/wallpaper-prefs', [$controller, 'wallpaperPrefs']);
+        $routes->addRoute(['GET', 'POST', 'DELETE', 'OPTIONS'], '/mambo-desktop/wallpaper/custom', [$controller, 'wallpaperCustom']);
     }
 
     public function onApiDashboardWidgets(Event $event): void
@@ -78,22 +78,22 @@ class GravDesktopAdmin2Plugin extends Plugin
             return;
         }
 
-        $cfg = (array) $this->grav['config']->get('plugins.grav-desktop-admin2', []);
+        $cfg = (array) $this->grav['config']->get('plugins.mambo-desktop-admin2', []);
         if (empty($cfg['show_clock_widget'])) {
             return;
         }
 
         $widgets = $event['widgets'] ?? [];
         $widgets[] = [
-            'id' => 'grav-desktop.clock',
-            'plugin' => 'grav-desktop-admin2',
+            'id' => 'mambo-desktop.clock',
+            'plugin' => 'mambo-desktop-admin2',
             'label' => 'Desktop Clock',
             'icon' => 'Clock',
             'sizes' => ['sm', 'md'],
             'defaultSize' => 'sm',
             'authorize' => 'api.access',
             'priority' => 70,
-            'scriptUrl' => '/gpm/plugins/grav-desktop-admin2/widget-script',
+            'scriptUrl' => '/gpm/plugins/mambo-desktop-admin2/widget-script',
         ];
         $event['widgets'] = $widgets;
     }
@@ -106,11 +106,11 @@ class GravDesktopAdmin2Plugin extends Plugin
 
         $items = $event['items'] ?? [];
         $items[] = [
-            'id' => 'grav-desktop-admin2',
-            'plugin' => 'grav-desktop-admin2',
+            'id' => 'mambo-desktop-admin2',
+            'plugin' => 'mambo-desktop-admin2',
             'label' => 'Mambo Desktop',
             'icon' => 'fa-desktop',
-            'route' => '/plugin/grav-desktop-admin2',
+            'route' => '/plugin/mambo-desktop-admin2',
             'priority' => 83,
         ];
         $event['items'] = $items;
@@ -118,7 +118,7 @@ class GravDesktopAdmin2Plugin extends Plugin
 
     public function onApiPluginPageInfo(Event $event): void
     {
-        if (!$this->isEnabled() || ($event['plugin'] ?? '') !== 'grav-desktop-admin2') {
+        if (!$this->isEnabled() || ($event['plugin'] ?? '') !== 'mambo-desktop-admin2') {
             return;
         }
 
@@ -127,8 +127,8 @@ class GravDesktopAdmin2Plugin extends Plugin
         }
 
         $event['definition'] = [
-            'id' => 'grav-desktop-admin2',
-            'plugin' => 'grav-desktop-admin2',
+            'id' => 'mambo-desktop-admin2',
+            'plugin' => 'mambo-desktop-admin2',
             'title' => 'Mambo Desktop',
             'icon' => 'fa-desktop',
             'page_type' => 'component',
@@ -137,7 +137,7 @@ class GravDesktopAdmin2Plugin extends Plugin
 
     private function isEnabled(): bool
     {
-        return (bool) $this->grav['config']->get('plugins.grav-desktop-admin2.enabled', true);
+        return (bool) $this->grav['config']->get('plugins.mambo-desktop-admin2.enabled', true);
     }
 
     /** @param mixed $user */

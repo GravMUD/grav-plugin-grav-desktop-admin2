@@ -1,7 +1,7 @@
 ﻿name: Mambo Desktop for Admin2
-slug: grav-desktop-admin2
+slug: mambo-desktop-admin2
 type: plugin
-version: 0.7.0
+version: 1.0.0
 description: Web desktop for Admin2 — icon launcher, windows, taskbar, notepad, clock, language switcher, Team DC Arcade.
 icon: desktop
 author:
@@ -9,7 +9,7 @@ author:
   email: chief@gravmud.site
   url: https://gravmud.site
 homepage: https://desktop.gravmud.site
-bugs: https://github.com/GravMUD/grav-plugin-grav-desktop-admin2/issues
+bugs: https://github.com/GravMUD/grav-plugin-mambo-desktop-admin2/issues
 docs: https://desktop.gravmud.site
 keywords: grav, admin2, admin-next, desktop, windows, arcade, operator
 license: MIT

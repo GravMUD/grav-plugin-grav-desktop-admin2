@@ -10,10 +10,10 @@ Paste this body (everything below the line):
 
 I would like to add my new plugin to the Grav Repository.
 
-**Repository:** https://github.com/GravMUD/grav-plugin-grav-desktop-admin2  
-**Release:** https://github.com/GravMUD/grav-plugin-grav-desktop-admin2/releases/tag/v0.6.0  
+**Repository:** https://github.com/GravMUD/grav-plugin-mambo-desktop-admin2  
+**Release:** https://github.com/GravMUD/grav-plugin-mambo-desktop-admin2/releases/tag/1.0.0  
 **Plugin name:** Mambo Desktop for Admin2  
-**Plugin slug:** grav-desktop-admin2  
+**Plugin slug:** mambo-desktop-admin2  
 **License:** MIT  
 **Grav target:** Grav 2.0 / Admin2  
 **Site / docs:** https://desktop.gravmud.site  
@@ -31,16 +31,16 @@ Mambo Desktop for Admin2 is a free web desktop inside Grav 2's Admin2 panel — 
 ## Install (once listed)
 
 ```bash
-bin/gpm install grav-desktop-admin2
+bin/gpm install mambo-desktop-admin2
 ```
 
 Until listed:
 
 ```bash
-bin/gpm direct-install https://github.com/GravMUD/grav-plugin-grav-desktop-admin2/releases/download/v0.6.0/grav-plugin-grav-desktop-admin2.zip
+bin/gpm direct-install https://github.com/GravMUD/grav-plugin-mambo-desktop-admin2/releases/download/1.0.0/grav-plugin-mambo-desktop-admin2.zip
 ```
 
-Optional arcade games: `grav-desktop-arcade-bundle.zip` on the same release page (extract into `assets/arcade/`).
+Optional arcade games: `mambo-desktop-arcade-bundle.zip` on the same release page (extract into `assets/arcade/`).
 
 ---
 
