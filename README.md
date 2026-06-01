@@ -119,6 +119,17 @@ Without those folders, arcade icons still appear; opening them shows a missing-g
 
 See [CHANGELOG.md](CHANGELOG.md).
 
+## Attribution
+
+- **Admin2** — Trilby Media / Grav community
+- **JavaBean** — optional theming partner ([javabean.gravmud.site](https://javabean.gravmud.site))
+- **Team DC Arcade** — Emoji Invaders, Emoji Galaga, Magick Emojis, FlapLab
+
+## Author
+
+**FutureVision Labs · Team DC**  
+**Damian Caynes** ([@damian420caynes-beep](https://github.com/damian420caynes-beep)) — [gravmud.site](https://gravmud.site)
+
 ## License
 
 MIT — see [LICENSE](LICENSE).
