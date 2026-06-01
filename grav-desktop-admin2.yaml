@@ -1,0 +1,33 @@
+enabled: true
+
+show_menubar_shortcut: true
+
+show_admin_apps: true
+
+show_arcade: true
+
+show_clock_widget: true
+
+show_delight_features: true
+
+show_preset_strip: true
+
+show_sticky_notes: true
+
+show_operator_tools: true
+
+show_vitals: true
+
+show_recent_pages: true
+
+recent_pages_limit: 5
+
+show_spotify_embed: true
+
+spotify_embed_url: 'https://open.spotify.com/embed/playlist/37i9dQZF1DXcBWIGoYBM5M?utm_source=generator'
+
+icon_click: double
+
+wallpaper: gradient
+
+custom_apps: []

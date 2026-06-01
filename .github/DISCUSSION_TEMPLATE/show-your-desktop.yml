@@ -1,0 +1,20 @@
+title: Show your desktop
+labels: []
+body:
+  - type: markdown
+    value: |
+      Share a screenshot of your Grav Desktop setup — wallpapers, sticky notes, arcade wins, operator tools. Team DC loves a good flight deck.
+  - type: textarea
+    id: screenshot
+    attributes:
+      label: Screenshot or link
+      description: Drag an image into the comment or paste a URL
+    validations:
+      required: true
+  - type: textarea
+    id: setup
+    attributes:
+      label: Your stack
+      description: Grav version, JavaBean preset, plugins enabled, etc.
+    validations:
+      required: false

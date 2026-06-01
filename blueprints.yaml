@@ -1,0 +1,198 @@
+name: Grav Desktop for Admin2
+slug: grav-desktop-admin2
+type: plugin
+version: 0.6.0
+description: Web desktop for Admin2 — icon launcher, windows, taskbar, notepad, clock, language switcher, Team DC Arcade.
+icon: desktop
+author:
+  name: FutureVision Labs · Team DC
+  email: chief@gravmud.site
+  url: https://gravmud.site
+homepage: https://desktop.gravmud.site
+bugs: https://github.com/GravMUD/grav-plugin-grav-desktop-admin2/issues
+docs: https://desktop.gravmud.site
+keywords: grav, admin2, admin-next, desktop, windows, arcade, operator
+license: MIT
+compatibility:
+  grav: ['2.0']
+dependencies:
+  - { name: grav, version: '>=2.0.0' }
+  - { name: admin2, version: '>=1.0.0' }
+  - { name: api, version: '>=1.0.0' }
+form:
+  validation: loose
+  fields:
+    enabled:
+      type: toggle
+      label: Grav Desktop
+      highlight: 1
+      default: 1
+      options:
+        1: Enabled
+        0: Disabled
+      validate:
+        type: bool
+    show_menubar_shortcut:
+      type: toggle
+      label: Show Grav Desktop in Admin2 menubar
+      default: 1
+      help: Registers a desktop icon via the Admin2 menubar API. Does not write admin-next.yaml.
+      options:
+        1: Yes
+        0: No
+      validate:
+        type: bool
+    show_admin_apps:
+      type: toggle
+      label: Show Admin2 shortcut icons (Pages, Plugins, Themes, Tools, Settings)
+      default: 1
+      options:
+        1: Yes
+        0: No
+      validate:
+        type: bool
+    show_arcade:
+      type: toggle
+      label: Show Team DC Arcade icons
+      default: 1
+      help: Run scripts/build-arcade-bundle.ps1 to copy game builds into assets/arcade/
+      options:
+        1: Yes
+        0: No
+      validate:
+        type: bool
+    show_clock_widget:
+      type: toggle
+      label: Register Desktop Clock dashboard widget
+      default: 1
+      options:
+        1: Yes
+        0: No
+      validate:
+        type: bool
+    show_delight_features:
+      type: toggle
+      label: Phase C delight features (sticky notes, preset strip, custom wallpaper)
+      default: 1
+      options:
+        1: Yes
+        0: No
+      validate:
+        type: bool
+    show_preset_strip:
+      type: toggle
+      label: Show wallpaper preset strip on desktop
+      default: 1
+      options:
+        1: Yes
+        0: No
+      validate:
+        type: bool
+    show_sticky_notes:
+      type: toggle
+      label: Enable sticky notes on desktop
+      default: 1
+      options:
+        1: Yes
+        0: No
+      validate:
+        type: bool
+    show_operator_tools:
+      type: toggle
+      label: Show Operator tools (log tail, maintenance, API smoke test, GPM search)
+      default: 1
+      options:
+        1: Yes
+        0: No
+      validate:
+        type: bool
+    show_vitals:
+      type: toggle
+      label: Show Site Vitals desktop app
+      default: 1
+      options:
+        1: Yes
+        0: No
+      validate:
+        type: bool
+    show_recent_pages:
+      type: toggle
+      label: Show Recent Pages desktop app
+      default: 1
+      help: Last edited pages open in the Pages editor.
+      options:
+        1: Yes
+        0: No
+      validate:
+        type: bool
+    recent_pages_limit:
+      type: number
+      label: Recent pages count
+      default: 5
+      validate:
+        min: 1
+        max: 20
+    show_spotify_embed:
+      type: toggle
+      label: Show Spotify embed app on desktop
+      default: 1
+      options:
+        1: Yes
+        0: No
+      validate:
+        type: bool
+    spotify_embed_url:
+      type: text
+      label: Spotify embed URL
+      default: 'https://open.spotify.com/embed/playlist/37i9dQZF1DXcBWIGoYBM5M?utm_source=generator'
+      help: open.spotify.com/embed/... URL only
+    icon_click:
+      type: select
+      label: Open apps on
+      default: double
+      options:
+        single: Single click
+        double: Double click
+    wallpaper:
+      type: select
+      label: Desktop wallpaper style
+      default: gradient
+      options:
+        gradient: Neon gradient
+        teamdc: Team DC burst
+        midnight: Midnight
+        plain: Plain
+        javabean: JavaBean preset (requires grav-javabean-admin2)
+        custom: Custom upload (per user, via desktop preset strip)
+      help: JavaBean uses active preset tokens. Custom wallpaper is uploaded from the desktop preset strip (per admin user).
+    custom_apps:
+      type: list
+      label: Custom desktop apps
+      fields:
+        .label:
+          type: text
+          label: Label
+        .url:
+          type: text
+          label: URL
+        .icon:
+          type: text
+          label: Icon (emoji)
+          default: '🔗'
+        .iframe:
+          type: toggle
+          label: Open inside desktop window (iframe)
+          default: 1
+          options:
+            1: Yes
+            0: No (new tab)
+          validate:
+            type: bool
+        .width:
+          type: number
+          label: Window width
+          default: 800
+        .height:
+          type: number
+          label: Window height
+          default: 600

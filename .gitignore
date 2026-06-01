@@ -1,0 +1,7 @@
+.git
+node_modules
+*.zip
+
+# Arcade builds are copied locally via scripts/build-arcade-bundle.ps1
+assets/arcade/*
+!assets/arcade/README.md
