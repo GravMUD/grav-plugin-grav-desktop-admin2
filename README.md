@@ -91,31 +91,27 @@ Plugin settings (Admin2 → Plugins → Grav Desktop):
 | GET/PATCH | `/grav-desktop/maintenance` |
 | GET | `/grav-desktop/vitals`, `/recent-pages`, `/explorer` |
 
-## Arcade bundle
+## Arcade bundle (optional)
 
-Games are **not** in git by default (size). Copy builds locally:
+The desktop **lists** four Team DC games, but the game files are **not** in the plugin zip (they are large). After install, copy each game's static build into your Grav site:
 
-```powershell
-cd C:\path\to\GRAV-MUD
-.\scripts\build-arcade-bundle.ps1
+```text
+user/plugins/grav-desktop-admin2/assets/arcade/
+  invaders/index.html    ← Emoji Invaders
+  galaga/index.html      ← Emoji Galaga
+  magick/index.html      ← Magick Emojis
+  flaplab/index.html     ← FlapLab
 ```
 
-| Folder | Game |
-|--------|------|
-| `invaders` | Emoji Invaders |
-| `galaga` | Emoji Galaga |
-| `magick` | Magick Emojis |
-| `flaplab` | FlapLab |
+Each folder must have an `index.html` at its root (a normal web build / itch export). Grav Desktop opens:
 
-Games load from `/user/plugins/grav-desktop-admin2/assets/arcade/{game}/index.html` inside desktop windows.
+`/user/plugins/grav-desktop-admin2/assets/arcade/{game}/index.html`
 
-## Build GPM zip
+inside a window.
 
-```powershell
-.\scripts\build-arcade-bundle.ps1   # optional
-.\scripts\build-grav-desktop-gpm.ps1
-# -> dist/grav-plugin-grav-desktop-admin2.zip
-```
+**Where to get builds:** your own game project output, Team DC itch releases, or a future optional arcade add-on zip from [Releases](https://github.com/GravMUD/grav-plugin-grav-desktop-admin2/releases). You do **not** need any special repo name on your machine — only a standard Grav root with this plugin installed.
+
+Without those folders, arcade icons still appear; opening them shows a missing-game message until you add the files.
 
 ## Changelog
 
