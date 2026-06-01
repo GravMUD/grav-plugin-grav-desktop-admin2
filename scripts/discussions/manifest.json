@@ -1,0 +1,8 @@
+[
+  { "category": "General", "title": "Welcome to Grav Desktop - start here", "bodyFile": "01-welcome.md" },
+  { "category": "Ideas", "title": "Desktop and feature ideas - what should we ship next?", "bodyFile": "02-ideas.md" },
+  { "category": "Q&A", "title": "Q&A - install, windows, sticky notes, troubleshooting", "bodyFile": "03-qa.md" },
+  { "category": "Announcements", "title": "Grav Desktop for Admin2 v0.6.0 is live", "bodyFile": "04-announcement.md" },
+  { "category": "Polls", "title": "What is your favorite Grav Desktop app?", "bodyFile": "05-poll.md" },
+  { "category": "Show and tell", "title": "Show us your Grav Desktop flight deck", "bodyFile": "06-show-and-tell.md" }
+]

@@ -1,0 +1,5 @@
+mutation($discussionId: ID!) {
+  pinDiscussion(input: { discussionId: $discussionId }) {
+    discussion { id }
+  }
+}
