@@ -1,5 +1,9 @@
 ﻿# Changelog
 
+## 1.0.1 — 2026-06-02
+
+- **Fix:** Strip UTF-8 BOM from all PHP files — fixes PHP 8 namespace fatal on install/load (GPM 1.0.0 shipped with BOM)
+
 ## 1.0.0 — 2026-06-02
 
 - **Slug rename (Andy convention):** `mambo-desktop-admin2` — folder, config, GPM slug, API routes `/mambo-desktop/*`
