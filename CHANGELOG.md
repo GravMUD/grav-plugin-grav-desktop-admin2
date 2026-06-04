@@ -1,5 +1,10 @@
 ﻿# Changelog
 
+## 1.0.2 — 2026-06-04
+
+- **New:** Classic POST boot sequence — amber BIOS-style overlay on first desktop load (Team DC, narrative RAM test, arcade registry lines)
+- **New:** Esc / click to skip; optional **boot every visit** in plugin settings
+
 ## 1.0.1 — 2026-06-02
 
 - **Fix:** Strip UTF-8 BOM from all PHP files — fixes PHP 8 namespace fatal on install/load (GPM 1.0.0 shipped with BOM)

@@ -1,7 +1,7 @@
 ﻿name: Mambo Desktop for Admin2
 slug: mambo-desktop-admin2
 type: plugin
-version: 1.0.1
+version: 1.0.2
 description: Web desktop for Admin2 — icon launcher, windows, taskbar, notepad, clock, language switcher, Team DC Arcade.
 icon: desktop
 author:
@@ -74,6 +74,25 @@ form:
       type: toggle
       label: Phase C delight features (sticky notes, preset strip, custom wallpaper)
       default: 1
+      options:
+        1: Yes
+        0: No
+      validate:
+        type: bool
+    show_boot_sequence:
+      type: toggle
+      label: Classic POST boot sequence on desktop load
+      default: 1
+      help: Amber BIOS-style boot on first visit. Esc or click to skip.
+      options:
+        1: Yes
+        0: No
+      validate:
+        type: bool
+    boot_every_visit:
+      type: toggle
+      label: Show boot sequence every visit (not just first time)
+      default: 0
       options:
         1: Yes
         0: No

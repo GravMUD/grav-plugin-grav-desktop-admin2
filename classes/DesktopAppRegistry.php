@@ -52,6 +52,8 @@ class DesktopAppRegistry
             'wallpaperPresets' => $delightOn ? $wallpaperSvc->presetStrip() : [],
             'showPresetStrip' => $delightOn && (!array_key_exists('show_preset_strip', $cfg) || !empty($cfg['show_preset_strip'])),
             'showStickyNotes' => $delightOn && (!array_key_exists('show_sticky_notes', $cfg) || !empty($cfg['show_sticky_notes'])),
+            'showBootSequence' => !array_key_exists('show_boot_sequence', $cfg) || !empty($cfg['show_boot_sequence']),
+            'bootEveryVisit' => !empty($cfg['boot_every_visit']),
             'javabean' => $javabean->meta(),
             'iconClick' => (string) ($cfg['icon_click'] ?? 'double'),
             'sections' => [

@@ -85,6 +85,7 @@
   const ICON_LEFT = 18;
   const ICON_LAYOUT_KEY = 'mambo-desktop-icon-layout.v2';
   const WINDOWS_SESSION_VERSION = 'v2';
+  const BOOT_STORAGE_KEY = 'mambo-desktop-boot-seen.v1';
 
   const WALLPAPERS = {
     gradient: `
@@ -539,6 +540,88 @@
       background: color-mix(in srgb, black 55%, transparent); opacity: 0; transition: opacity 0.2s; }
     .gd-status.show { opacity: 1; }
     .gd-missing { padding: 1rem; font-size: 0.88rem; opacity: 0.85; }
+    .gd-boot {
+      position: absolute;
+      inset: 0;
+      z-index: 200;
+      display: flex;
+      align-items: stretch;
+      justify-content: stretch;
+      background: #050505;
+      color: #ffb000;
+      font-family: 'JetBrains Mono', 'Consolas', 'Courier New', monospace;
+      font-size: 0.78rem;
+      line-height: 1.45;
+      animation: gd-boot-in 0.25s ease-out;
+    }
+    .gd-boot.gd-boot-out {
+      animation: gd-boot-out 0.45s ease-in forwards;
+    }
+    @keyframes gd-boot-in {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    @keyframes gd-boot-out {
+      to { opacity: 0; filter: brightness(1.8); }
+    }
+    .gd-boot-screen {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      padding: 1.25rem 1.5rem;
+      box-shadow: inset 0 0 120px rgb(255 176 0 / 0.06);
+      background:
+        repeating-linear-gradient(
+          0deg,
+          rgb(0 0 0 / 0.12) 0,
+          rgb(0 0 0 / 0.12) 1px,
+          transparent 1px,
+          transparent 3px
+        ),
+        #050505;
+      cursor: default;
+      user-select: none;
+    }
+    .gd-boot-logo {
+      font-size: 1.05rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      color: #ffd566;
+      text-shadow: 0 0 12px rgb(255 176 0 / 0.35);
+    }
+    .gd-boot-sub {
+      margin-top: 0.15rem;
+      margin-bottom: 1rem;
+      opacity: 0.82;
+      font-size: 0.72rem;
+    }
+    .gd-boot-log {
+      flex: 1;
+      margin: 0;
+      white-space: pre-wrap;
+      overflow: auto;
+      min-height: 8rem;
+      color: #ffb000;
+    }
+    .gd-boot-bar {
+      height: 0.55rem;
+      margin-top: 0.75rem;
+      border: 1px solid rgb(255 176 0 / 0.45);
+      background: rgb(0 0 0 / 0.55);
+    }
+    .gd-boot-bar-fill {
+      display: block;
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, #cc8800, #ffb000);
+      transition: width 0.28s ease-out;
+      box-shadow: 0 0 8px rgb(255 176 0 / 0.45);
+    }
+    .gd-boot-hint {
+      margin-top: 0.55rem;
+      font-size: 0.68rem;
+      opacity: 0.55;
+    }
   `;
 
   class GravDesktopPage extends HTMLElement {
@@ -572,6 +655,12 @@
       this._customWallpaper = false;
       this._customWallpaperUrl = null;
       this._noteDragState = null;
+      this._bootEl = null;
+      this._bootLogEl = null;
+      this._bootBarFill = null;
+      this._bootActive = false;
+      this._bootConfig = null;
+      this._onBootKey = null;
     }
 
     connectedCallback() {
@@ -643,6 +732,9 @@
       }
       if (this._onDocClick) {
         document.removeEventListener('click', this._onDocClick);
+      }
+      if (this._onBootKey) {
+        document.removeEventListener('keydown', this._onBootKey);
       }
       this.detachWindowDragListeners();
       if (this._resizeRaf) {
@@ -795,33 +887,192 @@
       }
     }
 
+    shouldRunBoot(data) {
+      if (!data || data.showBootSequence === false) return false;
+      if (data.bootEveryVisit) return true;
+      return !localStorage.getItem(BOOT_STORAGE_KEY);
+    }
+
+    mountBootOverlay() {
+      if (this._bootEl || !this._root) return;
+      this._bootActive = true;
+      const boot = document.createElement('div');
+      boot.className = 'gd-boot';
+      boot.innerHTML = `
+        <div class="gd-boot-screen" role="dialog" aria-label="Mambo Desktop boot sequence">
+          <div class="gd-boot-logo">MAMBO DESKTOP</div>
+          <div class="gd-boot-sub">FutureVision Labs · Team DC · Admin2 Web Desktop</div>
+          <pre class="gd-boot-log" aria-live="polite"></pre>
+          <div class="gd-boot-bar" aria-hidden="true"><span class="gd-boot-bar-fill"></span></div>
+          <div class="gd-boot-hint">Esc to skip · click anywhere to enter desktop</div>
+        </div>`;
+      this._root.appendChild(boot);
+      this._bootEl = boot;
+      this._bootLogEl = boot.querySelector('.gd-boot-log');
+      this._bootBarFill = boot.querySelector('.gd-boot-bar-fill');
+      boot.querySelector('.gd-boot-screen')?.addEventListener('click', () => {
+        if (this._bootActive) this.dismissBoot(true);
+      });
+      this._onBootKey = (e) => {
+        if (e.key === 'Escape' && this._bootActive) this.dismissBoot(true);
+      };
+      document.addEventListener('keydown', this._onBootKey);
+      this.bootLine('MAMBO DESKTOP POST v1.0.2');
+      this.bootLine('Copyright (C) FutureVision Labs · Team DC');
+      this.bootLine('');
+    }
+
+    bootLine(text) {
+      if (!this._bootActive || !this._bootLogEl) return;
+      this._bootLogEl.textContent += `${text}\n`;
+      this._bootLogEl.scrollTop = this._bootLogEl.scrollHeight;
+    }
+
+    bootDelay(ms) {
+      return new Promise((resolve) => setTimeout(resolve, ms));
+    }
+
+    setBootProgress(pct) {
+      if (this._bootBarFill) {
+        this._bootBarFill.style.width = `${Math.min(100, Math.max(0, pct))}%`;
+      }
+    }
+
+    async runBootPreamble() {
+      await this.bootDelay(90);
+      this.bootLine('CPU: Admin2 WebComponent ........ OK');
+      await this.bootDelay(70);
+      this.bootLine('Flat-file CMS bridge .......... OK');
+      await this.bootDelay(80);
+      this.bootLine('POST: Testing narrative RAM');
+      for (let kb = 0; kb <= 640; kb += 128) {
+        if (!this._bootActive) return;
+        this.bootLine(`  ${kb}K OK`);
+        await this.bootDelay(45);
+      }
+      this.setBootProgress(12);
+      await this.bootDelay(90);
+    }
+
+    async dismissBoot(silent) {
+      if (!this._bootActive) return;
+      this._bootActive = false;
+      if (this._onBootKey) {
+        document.removeEventListener('keydown', this._onBootKey);
+        this._onBootKey = null;
+      }
+      const cfg = this._bootConfig || {};
+      if (!cfg.bootEveryVisit) {
+        localStorage.setItem(BOOT_STORAGE_KEY, String(Date.now()));
+      }
+      if (this._bootEl) {
+        this._bootEl.classList.add('gd-boot-out');
+        await this.bootDelay(420);
+        this._bootEl.remove();
+        this._bootEl = null;
+        this._bootLogEl = null;
+        this._bootBarFill = null;
+      }
+      if (!silent) {
+        this.flashStatus('Welcome to Mambo Desktop — Team DC');
+      }
+    }
+
+    async finishBootSequence() {
+      if (!this._bootActive) return;
+      this.bootLine('');
+      this.bootLine('Starting Mambo Desktop...');
+      this.setBootProgress(100);
+      await this.bootDelay(380);
+      await this.dismissBoot(false);
+    }
+
+    async applyBootstrapData(data) {
+      this._apps = data.apps || [];
+      this._sections = data.sections || [];
+      this._adminBase = data.adminBase || apiConfig().adminBase || '';
+      this._wallpaper = data.wallpaper || 'gradient';
+      this._wallpaperBackground = data.wallpaperBackground || null;
+      this._javabean = data.javabean || null;
+      this._username = data.username || 'admin';
+      this._wallpaperPresets = data.wallpaperPresets || [];
+      this._showPresetStrip = !!data.showPresetStrip;
+      this._showStickyNotes = !!data.showStickyNotes;
+      this._customWallpaper = !!data.customWallpaper;
+      this._iconClick = data.iconClick || 'double';
+      this._bootConfig = {
+        showBootSequence: data.showBootSequence !== false,
+        bootEveryVisit: !!data.bootEveryVisit,
+      };
+      if (!this._apps.length) {
+        this._apps = this.fallbackApps();
+      }
+      this._iconLayout = this.loadIconLayout();
+      this._root?.classList.toggle('gd-has-strip', this._showPresetStrip);
+    }
+
     async bootstrap() {
       try {
-        const data = await api('/mambo-desktop/bootstrap');
-        this._apps = data.apps || [];
-        this._sections = data.sections || [];
-        this._adminBase = data.adminBase || apiConfig().adminBase || '';
-        this._wallpaper = data.wallpaper || 'gradient';
-        this._wallpaperBackground = data.wallpaperBackground || null;
-        this._javabean = data.javabean || null;
-        this._username = data.username || 'admin';
-        this._wallpaperPresets = data.wallpaperPresets || [];
-        this._showPresetStrip = !!data.showPresetStrip;
-        this._showStickyNotes = !!data.showStickyNotes;
-        this._customWallpaper = !!data.customWallpaper;
-        this._iconClick = data.iconClick || 'double';
-        if (!this._apps.length) {
-          this._apps = this.fallbackApps();
+        if (!localStorage.getItem(BOOT_STORAGE_KEY)) {
+          this.mountBootOverlay();
+          await this.runBootPreamble();
         }
-        this._iconLayout = this.loadIconLayout();
-        this._root?.classList.toggle('gd-has-strip', this._showPresetStrip);
+
+        if (this._bootActive) {
+          this.bootLine('Detecting GRAV API endpoint...');
+          this.setBootProgress(22);
+        }
+
+        const data = await api('/mambo-desktop/bootstrap');
+        await this.applyBootstrapData(data);
+
+        if (!this._bootActive && this.shouldRunBoot(data)) {
+          this.mountBootOverlay();
+          await this.runBootPreamble();
+        }
+
+        if (this._bootActive && data.showBootSequence === false) {
+          await this.dismissBoot(true);
+        }
+
+        if (this._bootActive) {
+          this.bootLine('API link established');
+          this.setBootProgress(38);
+          const arcadeCount = this._apps.filter((a) => a.group === 'arcade').length;
+          this.bootLine(`App registry: ${this._apps.length} programs loaded`);
+          if (arcadeCount) {
+            this.bootLine(`Team DC Arcade: ${arcadeCount} titles ready`);
+          }
+          this.bootLine('Wallpaper engine .............. OK');
+          this.setBootProgress(58);
+        }
+
         await this.paintWallpaperFromState();
         this.renderPresetStrip();
         await this.loadStickyNotes();
+
+        if (this._bootActive) {
+          this.bootLine(`Sticky notes: ${this._showStickyNotes ? 'ON' : 'STBY'}`);
+          this.bootLine('Building Start menu...');
+          this.setBootProgress(82);
+        }
+
         this.renderIcons();
         this.buildStartMenu();
+
+        if (this._bootActive) {
+          await this.finishBootSequence();
+        }
+
         this.scheduleRestoreWindows();
       } catch (err) {
+        if (this._bootActive) {
+          this.bootLine('');
+          this.bootLine(`WARN: ${err.message}`);
+          this.bootLine('Loading fallback desktop...');
+          await this.bootDelay(280);
+          await this.dismissBoot(true);
+        }
         this._apps = this.fallbackApps();
         this._iconLayout = this.loadIconLayout();
         this.renderIcons();

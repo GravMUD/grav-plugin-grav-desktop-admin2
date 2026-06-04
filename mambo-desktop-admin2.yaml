@@ -1,5 +1,9 @@
 enabled: true
 
+show_boot_sequence: true
+
+boot_every_visit: false
+
 show_menubar_shortcut: true
 
 show_admin_apps: true
