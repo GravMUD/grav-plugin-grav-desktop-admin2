@@ -1,5 +1,9 @@
 ﻿# Changelog
 
+## 1.0.4 — 2026-06-02
+
+- **Fix:** Strip UTF-8 BOM from `blueprints.yaml` — fixes GPM **Blueprints: invalid** on install (rhuk/Andy validator)
+
 ## 1.0.3 — 2026-06-04
 
 - **Fix:** Grav 2 plugin bootstrap — `return new GravMamboDesktopAdmin2Plugin($name, $grav)` so Andy slug `mambo-desktop-admin2` loads (fixes “enabled but not found” / missing Admin2 sidebar)
