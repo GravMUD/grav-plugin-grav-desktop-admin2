@@ -169,3 +169,5 @@ class GravMamboDesktopAdmin2Plugin extends Plugin
         return class_exists(\Grav\Plugin\Api\ApiRouteCollector::class);
     }
 }
+
+return new GravMamboDesktopAdmin2Plugin($name, $grav);

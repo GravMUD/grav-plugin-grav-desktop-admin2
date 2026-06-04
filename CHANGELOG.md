@@ -1,5 +1,9 @@
 ﻿# Changelog
 
+## 1.0.3 — 2026-06-04
+
+- **Fix:** Grav 2 plugin bootstrap — `return new GravMamboDesktopAdmin2Plugin($name, $grav)` so Andy slug `mambo-desktop-admin2` loads (fixes “enabled but not found” / missing Admin2 sidebar)
+
 ## 1.0.2 — 2026-06-04
 
 - **New:** Classic POST boot sequence — amber BIOS-style overlay on first desktop load (Team DC, narrative RAM test, arcade registry lines)
