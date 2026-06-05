@@ -8,7 +8,7 @@ use Grav\Plugin\MamboDesktopAdmin2\DesktopMenubarLinks;
 use Grav\Plugin\MamboDesktopAdmin2\DesktopRouteCache;
 use RocketTheme\Toolbox\Event\Event;
 
-class GravMamboDesktopAdmin2Plugin extends Plugin
+class MamboDesktopAdmin2Plugin extends Plugin
 {
     public static function getSubscribedEvents(): array
     {
@@ -100,7 +100,11 @@ class GravMamboDesktopAdmin2Plugin extends Plugin
 
     public function onApiSidebarItems(Event $event): void
     {
-        if (!$this->isEnabled() || !$this->canUseAdmin($event['user'] ?? null)) {
+        if (!$this->isEnabled() || !is_dir(GRAV_ROOT . '/user/plugins/mambo-desktop-admin2')) {
+            return;
+        }
+
+        if (!$this->canUseAdmin($event['user'] ?? null)) {
             return;
         }
 
@@ -169,5 +173,3 @@ class GravMamboDesktopAdmin2Plugin extends Plugin
         return class_exists(\Grav\Plugin\Api\ApiRouteCollector::class);
     }
 }
-
-return new GravMamboDesktopAdmin2Plugin($name, $grav);
