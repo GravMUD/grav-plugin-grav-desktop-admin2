@@ -273,6 +273,7 @@ class DesktopAppRegistry
             ['id' => 'galaga', 'label' => 'Emoji Galaga', 'icon' => '🚀', 'folder' => 'galaga'],
             ['id' => 'magick', 'label' => 'Magick Emojis', 'icon' => '✨', 'folder' => 'magick'],
             ['id' => 'flaplab', 'label' => 'FlapLab', 'icon' => '🪽', 'folder' => 'flaplab'],
+            ['id' => 'outrun', 'label' => 'Mini-Cursy Outrun', 'icon' => '🚗', 'folder' => 'outrun'],
         ];
 
         $apps = [];

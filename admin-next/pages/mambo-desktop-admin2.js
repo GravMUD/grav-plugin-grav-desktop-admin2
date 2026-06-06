@@ -28,7 +28,7 @@
       ...(options.headers || {}),
     };
     if (cfg.token) headers['X-API-Token'] = cfg.token;
-    const res = await fetch(apiUrl(path), { ...options, headers });
+    const res = await fetch(apiUrl(path), { ...options, headers, credentials: 'include' });
     const text = await res.text();
     let data;
     try {
@@ -44,7 +44,7 @@
     const cfg = apiConfig();
     const headers = { Accept: 'application/json' };
     if (cfg.token) headers['X-API-Token'] = cfg.token;
-    const res = await fetch(apiUrl(path), { method: 'POST', headers, body: formData });
+    const res = await fetch(apiUrl(path), { method: 'POST', headers, body: formData, credentials: 'include' });
     const text = await res.text();
     let data;
     try {
@@ -840,7 +840,7 @@
       const cfg = apiConfig();
       const headers = { Accept: 'image/webp,image/*' };
       if (cfg.token) headers['X-API-Token'] = cfg.token;
-      const res = await fetch(apiUrl('/mambo-desktop/wallpaper/custom'), { headers });
+      const res = await fetch(apiUrl('/mambo-desktop/wallpaper/custom'), { headers, credentials: 'include' });
       if (!res.ok) throw new Error(`Wallpaper HTTP ${res.status}`);
       const blob = await res.blob();
       if (this._customWallpaperUrl) URL.revokeObjectURL(this._customWallpaperUrl);
