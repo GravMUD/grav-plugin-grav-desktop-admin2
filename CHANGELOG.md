@@ -1,5 +1,10 @@
 ﻿# Changelog
 
+## 1.0.5 — 2026-06-05
+
+- **Menubar:** Desktop shortcut registers via Operator Dock / JavaBean preferences merge (not broken action-only menubar API)
+- **Menubar:** Removed `onApiMenubarItems` URL registration that caused `undefined` action errors
+
 ## 1.0.4 — 2026-06-02
 
 - **Fix:** Strip UTF-8 BOM from `blueprints.yaml` — fixes GPM **Blueprints: invalid** on install (rhuk/Andy validator)

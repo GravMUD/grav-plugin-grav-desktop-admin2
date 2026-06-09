@@ -4,7 +4,6 @@ namespace Grav\Plugin;
 
 use Grav\Common\Plugin;
 use Grav\Plugin\MamboDesktopAdmin2\DesktopApiBridgeController;
-use Grav\Plugin\MamboDesktopAdmin2\DesktopMenubarLinks;
 use Grav\Plugin\MamboDesktopAdmin2\DesktopRouteCache;
 use RocketTheme\Toolbox\Event\Event;
 
@@ -21,7 +20,6 @@ class MamboDesktopAdmin2Plugin extends Plugin
             $events['onApiSidebarItems'] = ['onApiSidebarItems', 0];
             $events['onApiPluginPageInfo'] = ['onApiPluginPageInfo', 0];
             $events['onApiDashboardWidgets'] = ['onApiDashboardWidgets', 0];
-            $events['onApiMenubarItems'] = ['onApiMenubarItems', 0];
         }
 
         return $events;
@@ -35,19 +33,6 @@ class MamboDesktopAdmin2Plugin extends Plugin
 
         $this->loadClasses();
         DesktopRouteCache::maybeInvalidate($this->grav);
-    }
-
-    public function onApiMenubarItems(Event $event): void
-    {
-        if (!$this->isEnabled() || !$this->canUseAdmin($event['user'] ?? null)) {
-            return;
-        }
-
-        $items = $event['items'] ?? [];
-        foreach ((new DesktopMenubarLinks($this->grav))->apiItems() as $item) {
-            $items[] = $item;
-        }
-        $event['items'] = $items;
     }
 
     public function onApiRegisterRoutes(Event $event): void
